@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="user-scalable=yes, width=device-width, initial-scale=1.0, minimum-scale=1" name="viewport">
+    <title></title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-select.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    
+    <link rel="stylesheet" href="font_awesome/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+
+    <!-- slide partner -->
+    <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" href="css/icon.css"/>
+
+
+</head>
+
+<body>
+    <div id="outer-wrap">
+    <div id="inner-wrap">
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="div-responsive">
+                        <div class="menu-responsive">
+                            <a class="nav-btn" id="nav-open-btn" href="#nav"><i class="fa fa-bars"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-12 logo">
+                        <h1>
+                            <a href="/index.html" title="giao nhận việc">
+                                <img src="images/logo.png" alt="giao nhận việc">
+                                <div class="clear-fix"></div>
+                            </a>
+                        </h1>
+                    </div>
+                    <div class="col-md-7 col-sm-8 col-xs-12 menu-main">
+                        <div class="row">
+                            <nav>
+                                <ul class="list-unstyled">
+                                    <li><a href="#" title="">danh sách nhân viên</a><i class="fa fa-angle-down"></i></li>
+                                    <li><a href="#" title="">danh sách công việc</a><i class="fa fa-angle-down"></i></li>
+                                    <li><a href="#" title="">tin tức</a></li>
+                                    <div class="clear-fix"></div>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-12 col-xs-12 login">
+                        <a href=""><i class="fa fa-sign-in"></i>đăng nhập</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </header>
+
+        <nav id="nav" role="navigation">
+            <div class="block">
+                <a class="close-btn" id="nav-close-btn" href="#top"><i class="fa fa-times-circle"></i></a>
+                <ul>
+                    <li class="is-active">
+                        <a href="#">Danh sách nhân viên</a>
+                    </li>
+                    <li>
+                        <a href="#">Danh sách công việc</a>
+                    </li>
+                    <li>
+                        <a href="#">Tin tức</a>
+                    </li>
+                    <li>
+                        <a href="#">Đăng nhập</a>
+                    </li>
+                </ul>
+                
+            </div>
+        </nav>
+        
+        <!-- introduce -->
+        <section>
+            <div class="introduce dang-viec">
+                <div class="container">
+                    <div class="row">
+                        <div class="title-container">
+                            <h3>Đăng việc</h3>
+                        </div>
+                        <!-- introduce item -->
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <form id="frmDangviec" name="frmdangviec" action="#" method="post" class="form-horizontal frm-dangviec">
+                                <div class="form-group">
+                                    <label class="col-md-3 col-sm-4 col-xs-12 control-label">Tiêu đề công việc</label>
+                                    <div class="col-md-6 col-sm-8 col-xs-12">
+                                        <input name="txt_title" type="text" class="form-control" placeholder="Nhập tiêu đề công việc...">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 col-sm-4 col-xs-12 control-label">Thuộc danh mục công việc</label>
+                                    <div class="col-md-3 col-sm-4 col-xs-12">
+                                        <select name="txt_jobcategory" id="basic1" class="selectpicker show-tick form-control select-1">
+                                            <option>Chọn danh mục?</option>
+                                            <option>Báo chí</option>
+                                            <option>Truyền hình</option>
+                                        </select> 
+                                    </div>
+                                    <div class="col-md-3 col-sm-4 col-xs-12">
+                                        <select name="txt_jobsector" id="basic2" class="selectpicker show-tick form-control">
+                                            <option>Chọn chuyên mục?</option>
+                                            <option>Báo chí</option>
+                                            <option>Truyền hình</option>
+                                        </select>                  
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 col-sm-4 col-xs-12  control-label">Mô tả nôi dung công việc</label>
+                                    <div class="col-md-6 col-sm-8 col-xs-12 ">
+                                        <textarea name="txt_content" class="area-content form-control" rows="20"></textarea>
+                                        <p class="pull-right">Tối đa 5000 ký tự</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 col-sm-4 col-xs-12  control-label">Loại hình công việc</label>
+                                    <div class="col-md-3 col-sm-4 col-xs-12 ">
+                                        <label class="type">
+                                            <input type="radio" name="txt_budget_type" value="radio2">
+                                            <i class="icon icon-dola"></i>
+                                            <p>Làm việc theo giờ</p>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-3 col-sm-4 col-xs-12 ">
+                                        <label class="type">
+                                            <input type="radio" name="txt_budget_type" value="radio1">
+                                            <i class="icon icon-time"></i>
+                                            <p>Làm việc theo gói</p>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 col-sm-4 col-xs-12  control-label">Ngân sách cho dự án</label>
+                                    <div class="col-md-6 col-sm-8 col-xs-12 ">
+                                        <select name="txt_budget_packet" id="basic3" class="selectpicker show-tick form-control">
+                                            <option>Từ 1.000.000 đến 5.000.000</option>
+                                            <option>Từ 5.000.000 đến 10.000.000</option>
+                                        </select> 
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 col-sm-4 col-xs-12  control-label">Các kỹ năng nhân viên cần có</label>
+                                    <div class="col-md-6 col-sm-8 col-xs-12 ">
+                                        <input name="txt_skills" type="text" class="form-control" placeholder="Nhập kỹ năng...">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 col-sm-4 col-xs-12  control-label">Thời gian kết thúc nhận việc</label>
+                                    <div class="col-md-3 col-sm-8 col-xs-12 ">
+                                        <input name="txt_deadline" type="text" class="form-control datetimepicker" readonly placeholder="Chọn thời gian">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12 col-sm-12 col-xs-12  control-label">Chế độ nhân viên</label>
+                                    <div class="job">
+                                        <div class="col-md-3 col-sm-6 col-xs-12">
+                                            <a title="" href="#">
+                                                <div class="level-item active">
+                                                    <i class="icon icon-avatar-active"></i>
+                                                    <div class="line-gray"></div>
+                                                    <div class="title-job">
+                                                        <h4>nhân viên thử việc</h4>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6 col-xs-12">
+                                            <a title="" href="#">
+                                                <div class="level-item">
+                                                    <i class="icon icon-avatar-1"></i>
+                                                    <div class="line-gray"></div>
+                                                    <div class="title-job">
+                                                        <h4>nhân viên</h4>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6 col-xs-12">
+                                            <a title="" href="#">
+                                                <div class="level-item">
+                                                    <i class="icon icon-avatar-2"></i>
+                                                    <div class="line-gray"></div>
+                                                    <div class="title-job">
+                                                        <h4>nhân viên chuyên nghiệp</h4>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6 col-xs-12">
+                                            <a title="" href="#">
+                                                <div class="level-item">
+                                                    <i class="icon icon-avatar-3"></i>
+                                                    <div class="line-gray"></div>
+                                                    <div class="title-job">
+                                                        <h4>nhân viên cao cấp</h4>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 col-sm-4 col-xs-12  control-label">Số lượng nhân viên</label>
+                                    <div class="col-sm-2">
+                                        <input name="txt_quality" type="text" class="form-control" placeholder="Nhập số lượng...">
+                                    </div>
+                                    <label class="col-sm-3 control-label">Nhân viên</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 col-sm-4 col-xs-12  control-label">File đính kèm<br><span>(Tùy chọn)</span></label>
+                                    <div class="col-sm-3">
+                                        <input class="" name="txt_file"  type="file"><br>Tối đa 25MB
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="submit-form-boss">
+                                            <button type="submit" class="btn btn-blue">Đăng ký</button>
+                                            <button type="submit" class="btn btn-square">Lưu nháp</button>
+                                            <a href="#">Xem trước</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End introduce -->
+
+        <footer>
+            <div class="container">
+                <!-- slide partner -->
+                <div class="partners">
+                    <h3>Được tin tưởng và sử dụng bởi nhiều khách hàng</h3>
+                    <div id="owl-example" class="owl-carousel">
+                        <div class="item darkCyan">
+                            <img src="images/partner/1.png" alt="Touch">
+                        </div>
+                        <div class="item forestGreen">
+                            <img src="images/partner/2.png" alt="Touch">
+                        </div>
+                        <div class="item orange">
+                            <img src="images/partner/3.png" alt="Touch">
+                        </div>
+                        <div class="item yellow">
+                            <img src="images/partner/4.png" alt="Touch">
+                        </div>
+                        <div class="item darkCyan">
+                            <img src="images/partner/1.png" alt="Touch">
+                        </div>
+                        <div class="item forestGreen">
+                            <img src="images/partner/2.png" alt="Touch">
+                        </div>
+                        <div class="item orange">
+                            <img src="images/partner/3.png" alt="Touch">
+                        </div>
+                        <div class="item yellow">
+                            <img src="images/partner/4.png" alt="Touch">
+                        </div>
+                        <div class="item darkCyan">
+                            <img src="images/partner/1.png" alt="Touch">
+                        </div>
+                        <div class="item forestGreen">
+                            <img src="images/partner/2.png" alt="Touch">
+                        </div>
+                        <div class="item orange">
+                            <img src="images/partner/3.png" alt="Touch">
+                        </div>
+                        <div class="item yellow">
+                            <img src="images/partner/4.png" alt="Touch">
+                        </div>
+                    </div>
+                </div>
+                <!-- End partner -->
+                  
+                <!-- footer top -->
+                <div class="footer-top">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <h4>về giaonhanviec.com</h4>
+                            <div>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">Giới thiệu</a></li>
+                                    <li><a href="#">tin tức</a></li>
+                                    <li><a href="#">tuyển dụng</a></li>
+                                    <li><a href="#">điều khoản sử dụng</a></li>
+                                    <li><a href="#">chính sách bảo mật</a></li>
+                                    <li><a href="#">báo cáo công việc</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <h4>dịch vụ bổ sung</h4>
+                            <div>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">Quản lí dự án</a></li>
+                                </ul>
+                            </div>
+                            <h4>liên hệ với chúng tôi</h4>
+                            <div>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">thông tin liên hệ</a></li>
+                                    <li><a href="#">hỗ trợ - hướng dẫn</a></li>
+                                    <li><a href="#">đối tác</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <h4>tìm theo danh mục</h4>
+                            <div>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">nhân viên theo ngành nghề</a></li>
+                                    <li><a href="#">nhân viên theo năng lực</a></li>
+                                    <li><a href="#">nhân viên ở miền bắc</a></li>
+                                    <li><a href="#">nhân viên ở miền trung</a></li>
+                                    <li><a href="#">nhân viên ở miền nam</a></li>
+                                    <li><a href="#">tìm việc</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- End footer top -->
+                
+                <!-- social -->
+                <div class="social">
+                    <div class="social-box">
+                        <ul class="list-unstyled">
+                            <li><a href="#" title=""><img src="images/icon/facebook.png" alt=""></a></li>
+                            <li><a href="#" title=""><img src="images/icon/twinter.png" alt=""></a></li>
+                            <li><a href="#" title=""><img src="images/icon/google_plus.png" alt=""></a></li>
+                            <li><a href="#" title=""><img src="images/icon/in.png" alt=""></a></li>
+                            <div class="clear-fix"></div>
+                        </ul> 
+                    </div>
+                </div>
+                <!-- End social -->
+
+                <!-- copirignt -->
+                <div class="copiright text-center">
+                    &copy; 2015 giaonhanviec.com
+                </div>
+            </div>
+        </footer>
+
+        
+    </div>
+    </div>
+    <div class="scroll-top">
+            <a id="Scrolltop" href="#" title="">
+                <i class="fa fa-arrow-up"></i>
+            </a>
+    </div>
+
+
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/modernizr.custom.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-select.js"></script>
+    <script type="text/javascript" src="js/jquery.mCustomScrollbar.js"></script>
+    <script type="text/javascript" src="js/init.js"></script>
+    
+    
+    <!-- slide partner -->
+    <script src="js/owl.carousel.min.js"></script>
+    <script>
+    $(document).ready(function($) {
+      $("#owl-example").owlCarousel({
+        items : 4,
+        autoPlay : true,
+        responsive :    true
+      });
+    });
+    </script>
+    <!-- End slide partner -->
+
+    
+
+    <!-- menu responsive -->
+    <link rel="stylesheet" type="text/css" href="css/menu-responsive.css">
+    <script src="js/main.js"></script>
+
+
+    <!-- scroll to top -->
+    <script type="text/javascript">
+    $(document).ready(function(){
+    
+        //Check to see if the window is top if not then display button
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 300) {
+                $('.scroll-top').fadeIn();
+            } else {
+                $('.scroll-top').fadeOut();
+            }
+        });
+        
+        //Click event to scroll to top
+        $('#Scrolltop').click(function(){
+            $('html, body').animate({scrollTop : 0},800);
+            return false;
+        });
+        
+    });
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

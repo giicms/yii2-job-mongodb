@@ -1,0 +1,97 @@
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+use common\models\BlogCategory;
+
+/* @var $this yii\web\View */
+/* @var $model common\models\Posts */
+/* @var $form yii\widgets\ActiveForm */
+?>
+
+<?php $form = ActiveForm::begin(['options' => [ 'class' => 'form-horizontal form-label-left']]); ?>  
+<?= $form->field($model, 'name', ['template' => '<div class="col-md-2 col-sm-4 col-xs-12">{label}</div><div class="col-md-6 col-sm-8 col-xs-12">{input}{hint}{error}</div>'])->textInput() ?>
+<div class="form-group">
+    <div class="col-md-2 col-sm-4 col-xs-12"><label class="control-label">Danh mục</label></div>
+    <div class="col-md-6 col-sm-8 col-xs-12">
+        <select name="Posts[category_id]" class="form-control">
+            <?php
+
+            function show_category_select($category = array(), $parent = NULL, $indent = 0) {
+                foreach ($category as $key => $value) {
+                    if ($parent == $value->id)
+                        $selected = 'selected';
+                    else
+                        $selected = '';
+
+                    unset($category[$key]);
+                    echo '<option ' . $selected . ' value="' . $value->id . '">' . indent($indent) . $value->name . '</option>';
+                    show_category_select(BlogCategory::find()->where(['parent' => $value->id])->all(), $parent, $indent + 1);
+                }
+            }
+
+            function indent($int) {
+                if ($int > 0) {
+                    for ($index = 1; $index <= $int; $index++) {
+                        $data[] = '—';
+                    }
+                    return implode('', $data) . '&nbsp;&nbsp;';
+                } else
+                    echo '';
+            }
+
+            if (!empty($model))
+                show_category_select($category, $model->category_id);
+            else
+                show_category_select($category)
+                ?>
+        </select>
+    </div>
+</div>
+<?= $form->field($model, 'description', ['template' => '<div class="col-md-2 col-sm-4 col-xs-12">{label}</div><div class="col-md-6 col-sm-8 col-xs-12">{input}{hint}{error}</div>'])->textarea() ?>
+<?= $form->field($model, 'content', ['template' => '<div class="col-md-2 col-sm-4 col-xs-12">{label}</div><div class="col-md-6 col-sm-8 col-xs-12">{input}{hint}{error}</div>'])->textarea(['class'=>'text-editor']) ?>
+<div class="form-group">
+    <div class="col-md-2 col-sm-4 col-xs-12"><label class="control-label">Hình ảnh</label></div>
+    <div class="col-md-6 col-sm-4 col-xs-12 profile-avatar">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div id="image_preview">
+                    <?php if(\Yii::$app->controller->action->id == 'update'){?>
+                    <?php
+                    if (!empty($model->thumbnail)) {
+                        echo '<img src="' . $model->thumbnail . '" alt="' . $model->name . '" >';
+                    } }
+                    ?>
+                </div>
+            </div>
+        </div>    
+        <div class="row">       
+            <div class="col-md-3 col-sm-3 col-xs-9 input-avatar">
+                <input id="fieldID" class="form-control" name="Posts[thumbnail]" value="<?= $model->thumbnail; ?>" >
+            </div>
+            <div class="col-md-1 col-sm-1 col-xs-3 btn-upload">
+                <a href="/filemanager/dialog.php?type=1&field_id=fieldID&akey=<?= (string) $model->id ?>" class="btn iframe-btn btn-success" type="button"><i class="fa fa-upload"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-4 col-sm-6 col-xs-12">
+        <?= Html::submitButton($model->isNewRecord ? 'Thêm mới' : 'Cập nhật', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <button type="reset" class="btn btn-blue">Reset</button>
+    </div>
+</div>
+
+<?php ActiveForm::end(); ?>
+
+
+<?php
+if (!empty($model->thumbnail) && file_exists(Yii::$app->params['file'] . 'thumbnails/' . $model->thumbnail)) {
+    echo $this->registerJs('
+    $(".dz-message").hide();
+    $("#previews").html("<div class=\'dz-preview dz-processing dz-image-preview dz-success dz-complete\'><div class=\'dz-image\'><img src=\'' . Yii::$app->params['url_file'] . 'thumbnails/' . $model->thumbnail . '\'></div></div>");
+    $("#myDropzone").append("<div class=\"dz-delete\"><input type=\"hidden\" name=\"thumbnail\" id=\"page-thumbnail\" value=' . $model->thumbnail . '><a class=\"delete-img btn btn-danger\" href=\"javascript:void(0)\">Xóa</a></div>");
+        ');
+}
+?>
